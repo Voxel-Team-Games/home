@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Responsive layout -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <title>OpenDash — Open Source Geometry Dash Alternative | Voxel Team Games</title>
+
+    <meta
+        name="description"
+        content="OpenDash is a free and open-source game inspired by Geometry Dash, developed by Voxel Team Games. Create, play and modify your own levels."
+    >
+
+    <meta
+        name="keywords"
+        content="OpenDash, Voxel Team Games, Geometry Dash alternative, open source game, free game, level editor, platform game"
+    >
+
+    <meta name="author" content="Voxel Team Games">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="OpenDash — Voxel Team Games">
+    <meta
+        property="og:description"
+        content="A free and open-source Geometry Dash-inspired game by Voxel Team Games."
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://voxel-team-games.github.io/opendash">
+
+    <!-- Optional: replace with an OpenDash image later -->
+    <!--
+    <meta
+        property="og:image"
+        content="https://voxel-team-games.github.io/assets/opendash-banner.png"
+    >
+    -->
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #11111a;
+            color: #ffffff;
+        }
+
+        header {
+            padding: 60px 20px 40px;
+            text-align: center;
+            background: linear-gradient(180deg, #21143a, #11111a);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+        }
+
+        header p {
+            max-width: 750px;
+            margin: 20px auto 0;
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: #d8d8e5;
+        }
+
+        main {
+            width: min(1000px, 92%);
+            margin: 0 auto;
+            padding: 40px 0 80px;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #d8d8e5;
+            line-height: 1.7;
+        }
+
+        .game-container {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #08080d;
+            border: 2px solid #30284a;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .game-placeholder {
+            text-align: center;
+            padding: 30px;
+            color: #85859a;
+        }
+
+        /*
+         * FUTURE GAME IFRAME
+         *
+         * When the browser version is ready, replace the placeholder
+         * above with something like:
+         *
+         * <iframe
+         *     src="YOUR_GAME_URL"
+         *     title="OpenDash"
+         *     width="100%"
+         *     height="100%"
+         *     frameborder="0"
+         *     allowfullscreen>
+         * </iframe>
+         */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .feature {
+            background: #1a1924;
+            border: 1px solid #302e40;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .feature h3 {
+            margin-top: 0;
+        }
+
+        .feature p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            background: #7c4dff;
+            color: white;
+            transition: transform 0.15s ease, opacity 0.15s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .button.secondary {
+            background: #292638;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid #292735;
+            color: #77778a;
+        }
+
+        footer a {
+            color: #9b7cff;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2.3rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>OpenDash</h1>
+
+    <p>
+        A free and open-source game inspired by Geometry Dash,
+        developed by Voxel Team Games.
+        Create, play and modify your own levels.
+    </p>
+</header>
+
+<main>
+
+    <section>
+        <h2>Play OpenDash</h2>
+
+        <div class="game-container">
+
+            <!--
+                FUTURE BROWSER VERSION
+
+                Insert the OpenDash browser build here.
+
+                Example:
+
+                <iframe
+                    src="https://example.com/opendash/"
+                    title="OpenDash"
+                    width="100%"
+                    height="100%"
+                    frameborder="0"
+                    allowfullscreen>
+                </iframe>
+            -->
+
+            <div class="game-placeholder">
+                <h3>OpenDash in the browser</h3>
+
+                <p>
+                    The browser version isn't available yet.
+                    Check back later!
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section>
+        <h2>About OpenDash</h2>
+
+        <p>
+            OpenDash is a free and open-source game inspired by Geometry Dash,
+            created by Voxel Team Games.
+        </p>
+
+        <p>
+            The project has no goal of making a profit.
+            Ports, modifications, forks and community-created content are
+            welcome.
+        </p>
+
+        <p>
+            OpenDash is designed to be moddable and customizable,
+            giving the community the freedom to create new content
+            and experiment with the game.
+        </p>
+
+        <div class="buttons">
+
+            <a
+                class="button"
+                href="https://github.com/Voxel-Team-Games/opendash/releases"
+                target="_blank"
+                rel="noopener noreferrer">
+                View Releases
+            </a>
+
+            <a
+                class="button secondary"
+                href="https://github.com/Voxel-Team-Games/opendash"
+                target="_blank"
+                rel="noopener noreferrer">
+                GitHub Repository
+            </a>
+
+        </div>
+    </section>
+
+
+    <section>
+        <h2>Current Features</h2>
+
+        <div class="features">
+
+            <div class="feature">
+                <h3>🎮 Gameplay Mode</h3>
+                <p>
+                    Play the current OpenDash gameplay experience
+                    with automatic movement and jumping.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>🛠️ Level Editor</h3>
+                <p>
+                    Create your own levels using the built-in editor.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>🧱 Tiles & Hazards</h3>
+                <p>
+                    Build levels using tiles and hazards included
+                    with the current release.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>🔓 Open Source</h3>
+                <p>
+                    The source code is publicly available.
+                    Fork it, modify it and create your own version.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section>
+        <h2>Built for the Community</h2>
+
+        <p>
+            OpenDash is intentionally open.
+            You can create ports, forks, modifications, new levels,
+            new mechanics and other projects based on it.
+        </p>
+
+        <p>
+            The assets included with the project can also be used
+            as a starting point for creating new content.
+        </p>
+    </section>
+
+</main>
+
+
+<footer>
+    <p>
+        OpenDash is developed by
+        <a href="https://voxel-team-games.github.io/home">
+            Voxel Team Games
+        </a>.
+    </p>
+
+    <p>
+        Open source • Free to use • Community friendly
+    </p>
+</footer>
+
+</body>
+</html>
