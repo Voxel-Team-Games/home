@@ -1,46 +1,390 @@
-<html>
-  <head>
-    <title>Voxel Team</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <p>Navegação</p>
-    <a href="about">Sobre nós</a>
-<section class="games">
-    <h2>Nossos jogos</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101522">
+  <meta name="description" content="VoxelTeamGames is an independent game development studio from Brazil, creating original games such as UniteBlocks.">
+  <title>VoxelTeamGames — Independent Game Development</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #101522;
+      --surface: #171f30;
+      --surface-2: #202b40;
+      --text: #f4f7ff;
+      --muted: #aab6cc;
+      --accent: #8ee3c2;
+      --accent-2: #8ebcff;
+      --line: rgba(255,255,255,.11);
+      --radius: 22px;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 15% 0%, rgba(76,126,190,.17), transparent 35rem),
+        radial-gradient(ellipse at 90% 35%, rgba(81,190,155,.10), transparent 32rem),
+        var(--bg);
+      color: var(--text);
+      font: 16px/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: inherit; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(16,21,34,.82);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      min-height: 72px; display: flex; align-items: center;
+      justify-content: space-between; gap: 24px;
+    }
+    .brand {
+      display: inline-flex; align-items: center; gap: 11px;
+      text-decoration: none; font-weight: 800; letter-spacing: -.04em;
+    }
+    .brand-mark {
+      display: grid; place-items: center; width: 38px; height: 38px;
+      border-radius: 12px; color: #10201d; background: var(--accent);
+      font-weight: 950; font-size: 19px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 25px; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: .93rem;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .menu-button {
+      display: none; border: 1px solid var(--line); background: var(--surface);
+      color: var(--text); border-radius: 10px; padding: 8px 12px; font: inherit;
+    }
+    .hero { padding: 104px 0 82px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      color: var(--accent); text-transform: uppercase;
+      letter-spacing: .14em; font-size: .76rem; font-weight: 800;
+    }
+    .eyebrow::before {
+      content: ""; width: 22px; height: 2px; background: currentColor;
+    }
+    h1 {
+      max-width: 850px; margin: 20px 0 20px;
+      font-size: clamp(2.7rem, 7vw, 5.6rem);
+      line-height: .99; letter-spacing: -.065em;
+    }
+    .gradient-text {
+      background: linear-gradient(100deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero-copy { max-width: 690px; color: var(--muted); font-size: 1.12rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 30px; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      min-height: 48px; padding: 11px 19px; border-radius: 13px;
+      border: 1px solid transparent; text-decoration: none; font-weight: 750;
+      transition: transform .2s, background .2s, border-color .2s;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button.primary { background: var(--accent); color: #10201d; }
+    .button.secondary { border-color: var(--line); background: rgba(255,255,255,.035); }
+    .hero-panel {
+      margin-top: 58px; min-height: 260px; position: relative; overflow: hidden;
+      border: 1px solid var(--line); border-radius: 28px;
+      background:
+        linear-gradient(115deg, rgba(142,227,194,.12), transparent 52%),
+        repeating-linear-gradient(0deg, transparent 0 39px, rgba(255,255,255,.035) 40px),
+        repeating-linear-gradient(90deg, transparent 0 39px, rgba(255,255,255,.035) 40px),
+        var(--surface);
+      display: grid; place-items: center; text-align: center; padding: 34px;
+    }
+    .hero-panel::after {
+      content: ""; position: absolute; width: 230px; height: 230px;
+      border: 1px solid rgba(142,227,194,.22); transform: rotate(45deg);
+      border-radius: 34px; right: 8%; top: 12%;
+    }
+    .hero-panel-content { position: relative; z-index: 1; }
+    .voxel-symbol { font-size: 3rem; line-height: 1; color: var(--accent); }
+    .hero-panel strong { display: block; font-size: clamp(1.4rem, 4vw, 2.1rem); letter-spacing: -.04em; }
+    .hero-panel span { color: var(--muted); }
+    section { padding: 76px 0; }
+    .section-heading { max-width: 680px; margin-bottom: 30px; }
+    h2 { margin: 10px 0; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; letter-spacing: -.05em; }
+    .section-heading p, .muted { color: var(--muted); }
+    .about-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 20px; }
+    .card {
+      background: rgba(23,31,48,.82); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 27px;
+    }
+    .card h3 { margin: 0 0 10px; font-size: 1.25rem; letter-spacing: -.025em; }
+    .card p { margin: 0; color: var(--muted); }
+    .fact-list { display: grid; gap: 15px; }
+    .fact { display: flex; justify-content: space-between; gap: 18px; padding-bottom: 13px; border-bottom: 1px solid var(--line); }
+    .fact:last-child { border: 0; padding-bottom: 0; }
+    .fact span:first-child { color: var(--muted); }
+    .fact strong { text-align: right; }
+    .game-card {
+      display: grid; grid-template-columns: 1fr 1fr; overflow: hidden;
+      padding: 0; min-height: 330px;
+    }
+    .game-art {
+      min-height: 280px; display: grid; place-items: center; padding: 28px;
+      text-align: center; background:
+        linear-gradient(145deg, rgba(142,188,255,.18), rgba(142,227,194,.08)),
+        repeating-linear-gradient(0deg, transparent 0 31px, rgba(255,255,255,.045) 32px),
+        repeating-linear-gradient(90deg, transparent 0 31px, rgba(255,255,255,.045) 32px),
+        #1b2940;
+    }
+    .game-art .placeholder { max-width: 250px; color: var(--muted); font-size: .9rem; }
+    .game-info { padding: 34px; align-self: center; }
+    .tag {
+      display: inline-block; padding: 5px 10px; border-radius: 999px;
+      color: var(--accent); background: rgba(142,227,194,.1);
+      font-size: .75rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+    }
+    .game-info h3 { font-size: 2rem; margin: 13px 0 8px; letter-spacing: -.05em; }
+    .game-info p { color: var(--muted); }
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .feature { padding: 23px; }
+    .feature-icon {
+      width: 42px; height: 42px; display: grid; place-items: center;
+      border-radius: 12px; background: rgba(142,188,255,.12);
+      color: var(--accent-2); font-size: 1.2rem; margin-bottom: 17px;
+    }
+    .partnership {
+      border: 1px solid rgba(142,227,194,.25);
+      background: linear-gradient(120deg, rgba(142,227,194,.10), rgba(142,188,255,.07));
+      border-radius: 28px; padding: clamp(26px, 5vw, 48px);
+      display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: center;
+    }
+    .partnership p { color: var(--muted); max-width: 670px; }
+    .partnership-mark { font-size: 3.2rem; color: var(--accent); }
+    .contact-card { display: flex; align-items: center; justify-content: space-between; gap: 25px; }
+    footer { border-top: 1px solid var(--line); padding: 27px 0; color: var(--muted); font-size: .9rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    :focus-visible { outline: 3px solid var(--accent-2); outline-offset: 4px; }
+    @media (max-width: 760px) {
+      .hero { padding: 76px 0 55px; }
+      section { padding: 56px 0; }
+      .about-grid, .game-card { grid-template-columns: 1fr; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .game-art { min-height: 210px; }
+      .partnership { grid-template-columns: 1fr; }
+      .partnership-mark { display: none; }
+      .contact-card { align-items: flex-start; flex-direction: column; }
+      .menu-button { display: inline-block; }
+      .nav { position: relative; }
+      .nav-links {
+        display: none; position: absolute; top: 71px; left: -20px; right: -20px;
+        padding: 18px 20px 22px; background: #141c2b;
+        border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start;
+      }
+      .nav-links.open { display: flex; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="container nav" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="VoxelTeamGames home">
+        <span class="brand-mark">V</span>
+        <span>VoxelTeamGames</span>
+      </a>
+      <button class="menu-button" id="menuButton" aria-expanded="false" aria-controls="navLinks">Menu</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#games">Our Games</a>
+        <a href="#partnerships">Partnerships</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-    <div class="game-grid">
+  <main id="home">
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">Independent game development · Brazil</span>
+        <h1>Small team.<br><span class="gradient-text">Big worlds.</span></h1>
+        <p class="hero-copy">
+          VoxelTeamGames is an independent game development studio from Brazil.
+          We create original interactive experiences, explore new ideas, and build
+          games that bring creativity and play together.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="#games">Explore our work <span aria-hidden="true">↗</span></a>
+          <a class="button secondary" href="#contact">Get in touch</a>
+        </div>
 
-        <article class="game-card">
-<div style="text-align: center;">
-  <img src="assets/opendash0.1.png" alt="Uma visualização da versão 0.1 do OpenDash" style="width: 200px; height: auto;">
-</div>
+        <div class="hero-panel" aria-label="VoxelTeamGames visual identity">
+          <div class="hero-panel-content">
+            <div class="voxel-symbol" aria-hidden="true">▧</div>
+            <strong>Build ideas. Create worlds.</strong>
+            <span>Independent games made with curiosity.</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div class="game-info">
-                <h3>MorphJump</h3>
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Who we are</span>
+          <h2>Games made independently.</h2>
+          <p>
+            We are an independent development studio focused on creating our own
+            games and learning through every stage of development — from the first
+            prototype to a playable experience.
+          </p>
+        </div>
+        <div class="about-grid">
+          <article class="card">
+            <h3>Our approach</h3>
+            <p>
+              We believe interesting games can come from small teams and ambitious
+              ideas. Our goal is to develop distinctive experiences, improve them
+              through experimentation, and connect with players and other creators.
+            </p>
+          </article>
+          <aside class="card fact-list" aria-label="Studio information">
+            <div class="fact"><span>Studio</span><strong>VoxelTeamGames</strong></div>
+            <div class="fact"><span>Based in</span><strong>Brazil</strong></div>
+            <div class="fact"><span>Focus</span><strong>Game development</strong></div>
+            <div class="fact"><span>Current project</span><strong>UniteBlocks</strong></div>
+          </aside>
+        </div>
+      </div>
+    </section>
 
-                <p>Runner de plataforma baseado em geometria, construa e jogue!</p>
-                <p>Data de lançamento: 24/08/2026</p>
-                <p>Versão atual: 0.1</p>
+    <section id="games">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Our games</span>
+          <h2>Worlds to explore.</h2>
+          <p>Meet the project currently at the heart of VoxelTeamGames.</p>
+        </div>
+        <article class="card game-card">
+          <div class="game-art">
+            <div class="placeholder">
+              <div style="font-size:2.5rem; margin-bottom:10px" aria-hidden="true">▦</div>
+              <strong>UniteBlocks artwork</strong><br>
+              Replace this area with a screenshot or official game artwork.
             </div>
+          </div>
+          <div class="game-info">
+            <span class="tag">In development</span>
+            <h3>UniteBlocks</h3>
+            <p>
+              UniteBlocks is a voxel sandbox game for PC and Android, centered on
+              building, experimenting, and interacting with a world made of blocks.
+              It is being developed by VoxelTeamGames.
+            </p>
+            <p><strong>Development status:</strong> Active development. Commercial
+              availability and release details will be announced when confirmed.</p>
+            <!-- Replace # with the real project page URL when available. -->
+            <a class="button secondary" href="#contact">Ask about UniteBlocks</a>
+          </div>
         </article>
-        <article class="game-card">
-<div style="text-align: center;">
-  <img src="assets/UniteBlocks.png" alt="Uma visualização do prototipo do UniteBlocks" style="width: 200px; height: auto;">
-</div>
+      </div>
+    </section>
 
-            <div class="game-info">
-                <h3>UniteBlocks</h3>
+    <section>
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">What we value</span>
+          <h2>Curiosity drives creation.</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="card feature">
+            <div class="feature-icon" aria-hidden="true">✦</div>
+            <h3>Original ideas</h3>
+            <p>We enjoy exploring mechanics and concepts that give each project its own identity.</p>
+          </article>
+          <article class="card feature">
+            <div class="feature-icon" aria-hidden="true">▦</div>
+            <h3>Experimentation</h3>
+            <p>Prototyping and iteration help us turn ambitious ideas into playable systems.</p>
+          </article>
+          <article class="card feature">
+            <div class="feature-icon" aria-hidden="true">↗</div>
+            <h3>Collaboration</h3>
+            <p>We are interested in connecting with developers and creators who share a passion for games.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-                <p>Um jogo simples de voxels, com fisica, suporte a android e pc.</p>
-                <p>Data de lançamento: ainda não lançado</p>
-                <p>Versão atual: desconhecida</p>
-            </div>
-        </article>
+    <section id="partnerships">
+      <div class="container">
+        <div class="partnership">
+          <div>
+            <span class="eyebrow">Work with us</span>
+            <h2>Open to meaningful collaborations.</h2>
+            <p>
+              VoxelTeamGames is interested in discussing professional opportunities,
+              promotional collaborations, and potential licensing partnerships with
+              other game developers and rights holders. We approach every opportunity
+              with respect for each project's creators and intellectual property.
+            </p>
+            <a class="button primary" href="#contact">Contact our studio</a>
+          </div>
+          <div class="partnership-mark" aria-hidden="true">◇</div>
+        </div>
+      </div>
+    </section>
 
+    <section id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Contact</span>
+          <h2>Let's start a conversation.</h2>
+          <p>
+            For business inquiries, partnership discussions, or questions about
+            our projects, please get in touch.
+          </p>
+        </div>
+        <div class="card contact-card">
+          <div>
+            <h3>Business inquiries</h3>
+            <p class="muted">Replace the email address below with your official studio address.</p>
+          </div>
+          <!-- IMPORTANT: Replace this placeholder with an email address you control. -->
+          <a class="button primary" href="mailto:YOUR_EMAIL@example.com">Email VoxelTeamGames ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> VoxelTeamGames. All rights reserved.</span>
+      <span>Independent game development · Brazil</span>
     </div>
-</section>
-  </body>
-  <foot>
-    <p>Voxel Team Games é uma equipe de desenvolvedores independentes.</p>
+  </footer>
+
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.getElementById("navLinks");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
